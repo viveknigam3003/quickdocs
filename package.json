@@ -1,0 +1,28 @@
+{
+  "name": "quickdocs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.11.19",
+    "copyfiles": "^2.4.1",
+    "prettier": "^3.2.5",
+    "typedoc": "^0.25.8",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typedoc-plugin-mdn-links": "^3.1.16",
+    "typedoc-plugin-rename-defaults": "^0.7.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./bin/index.js",
+    "dev": "nodemon ./src/index.ts",
+    "postbuild": "copyfiles -u 1 src/css-overrides.css src/styles.css bin/ && npm link"
+  },
+  "bin": {
+    "quickdocs": "./bin/index.js"
+  }
+}
