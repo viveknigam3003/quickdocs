@@ -40,6 +40,3 @@ Contributions are welcome! Feel free to open an issue or a pull request.
 
 ## References
 Theme inspired by [tsdocs.dev](https://tsdocs.dev/)
-
-## Changelog
-- 1.0.0: Initial release
