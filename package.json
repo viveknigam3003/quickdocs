@@ -20,7 +20,7 @@
     "build": "tsc",
     "start": "node ./bin/index.js",
     "dev": "nodemon ./src/index.ts",
-    "postbuild": "copyfiles -u 1 src/css-overrides.css src/styles.css bin/ && npm link"
+    "postbuild": "copyfiles -u 1 src/css-overrides.css src/styles.css bin/"
   },
   "bin": {
     "quickdocs": "./bin/index.js"
