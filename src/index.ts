@@ -99,7 +99,7 @@ const generateDocsDefaultOptions = (): Partial<TypeDocOptions> => {
     navigation: {
       includeCategories: true,
       includeGroups: true,
-      includeFolders: true,
+      includeFolders: false,
     },
     categorizeByGroup: true,
     theme: "quickdocs",
@@ -241,7 +241,7 @@ const generateDocs = async (configJson: any) => {
   try {
     const app = await Application.bootstrapWithPlugins({
       ...generateDocsDefaultOptions(),
-      plugin: ["typedoc-plugin-mdn-links", "typedoc-plugin-rename-defaults"],
+      plugin: ["typedoc-plugin-mdn-links", "typedoc-plugin-rename-defaults"].concat(configJson.plugin ?? []),
       tsconfig: path.resolve(configJson.tsconfig),
       entryPoints: configJson.entryPoints.map((entryPoint: string) =>
         path.resolve(entryPoint)
@@ -295,10 +295,7 @@ const getConfigAndGenerateDocs = async () => {
 
     await generateDocs(quickdocsConfig);
   } catch (error) {
-    console.error(
-      "Error reading or parsing the quickdocs config file:",
-      (error as any).message
-    );
+    console.error("Error generating docs. Reason: ", (error as any).message);
   }
 };
 
